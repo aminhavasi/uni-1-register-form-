@@ -11,6 +11,14 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.1"
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^4.1.1",
+        "lodash": "^4.17.20",
+        "mongoose": "^5.10.5",
+        "morgan": "^1.10.0",
+        "rotating-file-stream": "^2.1.3"
     }
 }

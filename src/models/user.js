@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { number } = require('joi');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -36,7 +35,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    addrees: {
+    address: {
         type: String,
         required: true,
         maxlength: 255,
@@ -58,6 +57,7 @@ const userSchema = new mongoose.Schema({
     nationalCode: {
         type: Number,
         required: true,
+        unique: true,
     },
 });
 

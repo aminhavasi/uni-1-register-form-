@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Auth = require('./../models/auth');
+let persianDate = require('persian-date');
+persianDate.toLocale('en');
+const date = new persianDate().format('YYYY/M/DD');
 const { registerValidator } = require('./../validator/authValidator');
 
 router.post('/', async (req, res) => {
@@ -8,7 +11,9 @@ router.post('/', async (req, res) => {
 
     if (error) return res.status(400).send(error.details[0].message);
     try {
-        res.send('ok');
+        const user = Auth.findOne({ nationCode: req.body.nationCode });
+        if (user) return res.status(400).send('bad ');
+        req.body.date = date;
     } catch (err) {
         console.log(err);
         res.send(err);

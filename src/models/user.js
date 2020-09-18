@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
+const { number } = require('joi');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
         required: true,
+        maxlength: 124,
     },
     family: {
         type: String,
         trim: true,
         required: true,
+        maxlength: 124,
     },
     personnelId: {
         type: String,
@@ -36,6 +39,7 @@ const userSchema = new mongoose.Schema({
     addrees: {
         type: String,
         required: true,
+        maxlength: 255,
     },
     email: {
         type: String,
@@ -49,16 +53,18 @@ const userSchema = new mongoose.Schema({
     national: {
         type: String,
         required: true,
+        maxlength: 64,
     },
     nationalCode: {
-        type: String,
+        type: Number,
         required: true,
     },
-    password: {
-        type: String,
-        minlength: 8,
-        required: true,
-    },
+});
+
+userSchema.virtual('user', {
+    ref: 'Auth',
+    localField: '_id',
+    foreignField: 'user',
 });
 
 const User = mongoose.model('User', userSchema);

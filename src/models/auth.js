@@ -8,7 +8,6 @@ const authSchema = new mongoose.Schema({
         required: true,
     },
 });
-const Auth = mongoose.model('Auth', authSchema);
 
 authSchema.pre('save', function (next) {
     let user = this;
@@ -19,7 +18,9 @@ authSchema.pre('save', function (next) {
                 next();
             });
         });
+    } else {
+        next();
     }
-    next();
 });
+const Auth = mongoose.model('Auth', authSchema);
 module.exports = Auth;

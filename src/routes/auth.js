@@ -7,8 +7,8 @@ const date = new persianDate().format('YYYY/M/DD');
 const { registerValidator } = require('./../validator/authValidator');
 const User = require('./../models/user');
 const { ID } = require('./../functions/personnelID');
-
-router.post('/', async (req, res) => {
+//register on site
+router.post('/register', async (req, res) => {
     const { error } = await registerValidator(req.body);
 
     if (error) return res.status(400).send(error.details[0].message);
@@ -33,5 +33,7 @@ router.post('/', async (req, res) => {
         res.send(err);
     }
 });
+
+router.post('/login', async (req, res) => {});
 
 module.exports = router;

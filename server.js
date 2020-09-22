@@ -29,7 +29,7 @@ app.use(helmet());
 app.use(morgan('combined', { stream: accessLogStream }));
 app.use(cors(corsOptions));
 
-app.use('/api/register', require('./src/routes/auth'));
+app.use('/api/auth', require('./src/routes/auth'));
 //*------------------------------------------------------- */
 httpServer.listen(port, () => {
     console.log(`server is running on port ${port}`);
